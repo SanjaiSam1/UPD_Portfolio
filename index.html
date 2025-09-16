@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>Sanjai Sam Portfolio</title>
+    <style>
+        .kgcas-link {
+            color: red;
+            text-decoration: none;
+        }
+        
+        /* Red Gradient Resume Button Styles */
+        .resume-btn {
+            margin: 20px 0;
+        }
+        
+        .my-resume-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #ff4d4d 0%, #cc0000 100%);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .my-resume-btn:hover {
+            background: linear-gradient(135deg, #cc0000 0%, #ff4d4d 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .my-resume-btn:active {
+            transform: translateY(0);
+        }
+        
+        .my-resume-btn i {
+            margin-right: 10px;
+        }
+        
+        /* Design-focused animations */
+        @keyframes designPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .design-animation {
+            animation: designPulse 4s infinite ease-in-out;
+        }
+        
+        /* UI/UX specific styles */
+        .design-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin: 5px;
+            font-weight: 500;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+        
+        .close-modal:hover {
+            color: #000;
+        }
+        
+        .figma-embed {
+            width: 100%;
+            height: 500px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        /* Design button */
+        .design-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .design-btn:hover {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .design-btn i {
+            margin-right: 8px;
+        }
+        
+        /* Images button */
+        .images-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .images-btn:hover {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .images-btn i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                Sanjai <span>Sam</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="#home">Home</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a
+                        href="#about">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a
+                        href="#skills">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a
+                        href="#projects">Projects</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a
+                        href="#contact">Contact</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="#home" onclick="cancel()">Home</a>
+                <a href="#about" onclick="cancel()">About</a>
+                <a href="#skills" onclick="cancel()">Skills</a>
+                <a href="#projects" onclick="cancel()">Projects</a>
+                <a href="#contact" onclick="cancel()">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="main-container">
+            <div class="image design-animation" data-aos="zoom-out" data-aos-duration="3000">
+                <img src="sanjaisam.jpg" alt="Sanjai Sam" style="width:100%; height:100%; object-fit:cover; object-position:center;">
+            </div>
+            <div class="content">
+                <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">
+                    Hey I'm <span>Sanjai Sam</span>
+                </h1>
+                <div class="typewriter" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900">
+                    <span class="typewriter-text"></span><label>|</label>
+                </div>
+                <!-- Red Gradient Resume Button -->
+                <div class="resume-btn" data-aos="flip-down" data-aos-duration="1500" data-aos-delay="950">
+                    <a href="my_resume.pdf" download="Sanjai_Sam_Resume.pdf" class="my-resume-btn">
+                        <i class="fas fa-file-alt"></i> My Resume
+                    </a>
+                </div>
+                <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1000">
+                    Studying in <a href="https://www.kgcas.com" target="_blank" class="kgcas-link">KGCAS</a>
+                </p>
+                <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">
+                    <span class="design-badge">UI/UX Designer</span> 
+                    <span class="design-badge">Graphic Designer</span> 
+                    <span class="design-badge">Brand Identity Specialist</span>
+                </p>
+                <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1200">
+                    Expert in: <strong>Figma</strong> | <strong>Adobe Creative Suite</strong> | <strong>Blender</strong> | <strong>Photoshop</strong> | <strong>Illustrator</strong>
+                </p>
+                <div class="social-links">
+                    <a href="https://dribbble.com" target="_blank" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="1400">
+                        <i class="fa-brands fa-dribbble"></i>
+                    </a>
+                    <a href="https://www.behance.net" target="_blank" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="1500">
+                        <i class="fa-brands fa-behance"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="1600">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="1700">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+                <div class="btn" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1800">
+                    <button id="hire-me">Hire me</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated Left Arrow Button -->
+    <div class="arrow-btn" data-aos="fade-right" data-aos-delay="2000">
+        <a href="#home"><i class="fas fa-arrow-left"></i></a>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <h2 data-aos="fade-down" data-aos-duration="1000">About Me</h2>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <p>
+                        As a passionate UI/UX designer and graphic artist with over 5 years of
+                        experience, I specialize in creating visually stunning and highly intuitive digital experiences. My
+                        expertise spans across user-centered design principles and creative visual storytelling, allowing me to bridge the gap
+                        between aesthetics and functionality.
+                    </p>
+                    <p>
+                        I bring brands to life through compelling visual narratives,
+                        creating logos, branding systems, and digital interfaces that resonate with target audiences.
+                        My approach combines design thinking with creative flair, ensuring each project delivers both
+                        business value and exceptional user experience.
+                    </p>
+                    <div class="design-highlights">
+                        <h3 data-aos="fade-up" data-aos-delay="200">Design Philosophy</h3>
+                        <p data-aos="fade-up" data-aos-delay="300">
+                            I believe in creating designs that are not only beautiful but also functional, accessible, and meaningful. 
+                            Every pixel has a purpose, and every interaction tells a story.
+                        </p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>samsanjai82@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 6379459935</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="skills-container">
+            <h2 data-aos="fade-down" data-aos-duration="1000">My Design Expertise</h2>
+            <div class="skills-grid" data-aos="fade-up">
+                <div class="skill-category">
+                    <h3><i class="fas fa-pencil-ruler"></i> UI/UX Design</h3>
+                    <ul>
+                        <li>User Research & Personas</li>
+                        <li>Wireframing & Prototyping</li>
+                        <li>Interaction Design</li>
+                        <li>User Testing</li>
+                        <li>Information Architecture</li>
+                        <li>Design Systems</li>
+                        <li>Mobile App Design</li>
+                        <li>Responsive Web Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-paint-brush"></i> Graphic Design</h3>
+                    <ul>
+                        <li>Brand Identity Design</li>
+                        <li>Logo Design</li>
+                        <li>Typography</li>
+                        <li>Print Design</li>
+                        <li>Marketing Materials</li>
+                        <li>Social Media Graphics</li>
+                        <li>Illustration</li>
+                        <li>Packaging Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Design Tools</h3>
+                    <ul>
+                        <li>Figma</li>
+                        <li>Adobe Photoshop</li>
+                        <li>Adobe Illustrator</li>
+                        <li>Adobe InDesign</li>
+                        <li>Blender</li>
+                        <li>Adobe XD</li>
+                        <li>Sketch</li>
+                        <li>Procreate</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="projects-container">
+            <h2 data-aos="fade-down" data-aos-duration="1000">My Design Projects</h2>
+            <div class="projects-grid" data-aos="fade-up">
+                <!-- Project 1: Field2Market App -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-seedling"></i>
+                        <h3>Field2Market App UI/UX Design</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>A comprehensive farming marketplace app that connects farmers directly with buyers, featuring real-time market prices, weather data, and agricultural resources. Designed for simplicity and accessibility for rural users.</p>
+                        <div class="project-tech">
+                            <span>Figma</span>
+                            <span>UI Design</span>
+                            <span>User Research</span>
+                            <span>Prototyping</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="design-btn" onclick="showField2MarketDesign()">
+                            <i class="fas fa-paint-brush"></i> View Design
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Aurora Streaming App Intro -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-play-circle"></i>
+                        <h3>Aurora Streaming App UI/UX Design</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>UI/UX design for Aurora streaming platform featuring intuitive navigation, personalized content discovery, and seamless user experience across devices.</p>
+                        <div class="project-tech">
+                            <span>Figma</span>
+                            <span>UI Design</span>
+                            <span>User Experience</span>
+                            <span>Prototyping</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="design-btn" onclick="showAuroraDesign()">
+                            <i class="fas fa-paint-brush"></i> View Design
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Non-Invasive Hemostasis Monitor -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Non-Invasive Hemostasis Monitor 3D Model</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>A detailed 3D model and visualization of a medical device for non-invasive hemostasis monitoring. Designed for product demonstration, medical training, and investor presentations.</p>
+                        <div class="project-tech">
+                            <span>Blender</span>
+                            <span>3D Modeling</span>
+                            <span>Product Design</span>
+                            <span>Medical Visualization</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="back_view.jpg" target="_blank" class="images-btn">
+                            <i class="fas fa-images"></i> Back View
+                        </a>
+                        <a href="perspective_view.png" target="_blank" class="images-btn">
+                            <i class="fas fa-images"></i> Perspective View
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Field2Market Design Modal -->
+    <div id="field2MarketModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeField2MarketModal()">&times;</span>
+            <h2>Field2Market App UI/UX Design</h2>
+            <p>Comprehensive farming marketplace app design with intuitive interface connecting farmers directly with buyers.</p>
+            <iframe class="figma-embed" src="https://embed.figma.com/design/iHY7FI9ww2cMSSJmdtOGWR/Sanjai-Sam--2326ka45-?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Aurora Design Modal -->
+    <div id="auroraModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAuroraModal()">&times;</span>
+            <h2>Aurora Streaming App UI/UX Design</h2>
+            <p>UI/UX design for Aurora streaming platform featuring intuitive navigation and seamless user experience.</p>
+            <iframe class="figma-embed" src="https://embed.figma.com/design/sFtnFA2yTKpF0Cxl3Mz1IS/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2 data-aos="fade-down" data-aos-duration="1000">Let's Create Together</h2>
+            <div class="contact-content" data-aos="fade-up">
+                <p>Have a project in mind? Let's discuss how we can bring your vision to life with exceptional design!</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>samsanjai82@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 6379459935</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2025 Sanjai Sam. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 0 });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        function hamburg() {
+            document.querySelector('.dropdown').style.transform = 'translateY(0)';
+        }
+
+        function cancel() {
+            document.querySelector('.dropdown').style.transform = 'translateY(-500px)';
+        }
+
+        // Project demo functions
+        function showField2MarketDesign() {
+            document.getElementById('field2MarketModal').style.display = 'block';
+        }
+        
+        function closeField2MarketModal() {
+            document.getElementById('field2MarketModal').style.display = 'none';
+        }
+        
+        function showAuroraDesign() {
+            document.getElementById('auroraModal').style.display = 'block';
+        }
+        
+        function closeAuroraModal() {
+            document.getElementById('auroraModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = ['field2MarketModal', 'auroraModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target == modal) {
+                    if (modalId === 'field2MarketModal') closeField2MarketModal();
+                    if (modalId === 'auroraModal') closeAuroraModal();
+                }
+            });
+        }
+
+        // Typewriter effect
+        const typewriterText = document.querySelector('.typewriter-text');
+        const phrases = ["UI/UX Designer", "Graphic Artist", "Brand Identity Specialist", "Digital Designer"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isEnd = false;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typewriterText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isEnd = true;
+                setTimeout(typeWriter, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(typeWriter, 500);
+            } else {
+                const speed = isDeleting ? 50 : 100;
+                setTimeout(typeWriter, speed);
+            }
+
+            if (isEnd) {
+                isDeleting = true;
+                isEnd = false;
+            }
+        }
+
+        // Start the typewriter effect
+        setTimeout(typeWriter, 1000);
+
+        // Hire me button functionality
+        document.getElementById('hire-me').addEventListener('click', function() {
+            document.querySelector('#contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
